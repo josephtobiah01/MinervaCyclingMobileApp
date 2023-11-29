@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:MinervaCyclingMobileApp.CustomRenderers"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodels="clr-namespace:MinervaCyclingMobileApp.ViewModels"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
+             x:DataType="viewmodels:LoginPageViewModel"
+             x:Class="MinervaCyclingMobileApp.Views.LoginPage"
+             Title="LoginPage"
+             BackgroundColor="{AppThemeBinding Dark=white, Light=white}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Dark=white, Light=white}" StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+    
+    
+    <VerticalStackLayout 
+        Spacing="15" 
+        Padding="30,0" 
+        VerticalOptions="Center">
+
+        <Image 
+            Source="minervalogo" 
+            HeightRequest="200" 
+            WidthRequest="250"
+            Margin="5"/>
+
+        <Grid
+            ColumnDefinitions="*,2*"
+            RowDefinitions="*,2*"
+            ColumnSpacing="3"
+            RowSpacing="7"
+            Margin="5,2,5,0">
+
+            <custom:CustomEntry
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BorderColor="#2F4F4F"
+                TextColor="Black"
+                BorderThickness="1"
+                ClearButtonVisibility="WhileEditing"
+                CornerRadius="20"
+                Placeholder="Email"
+                PlaceholderColor="#A9A9A9"
+                Text="{Binding Email}"/>
+
+            <custom:CustomEntry
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BorderColor="#2F4F4F"
+                TextColor="Black"
+                BorderThickness="1"
+                ClearButtonVisibility="WhileEditing"
+                CornerRadius="20"
+                Placeholder="Password"
+                PlaceholderColor="#A9A9A9"
+                Text="{Binding Password}"/>
+
+        </Grid>
+        
+        <Grid
+            ColumnDefinitions="*,*"
+            Padding="0"
+            Margin="10,0,10,3"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center">
+            
+            <Label
+                Grid.Column="1"
+                Text="Forgot Password"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="FillAndExpand"
+                Opacity=".8"
+                TextColor="#4169E1"
+                Margin="0"
+                FontSize="15"
+                Padding="0">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="Roboto-Italic.ttf"/>
+                        <On Platform="iOS" Value="HelveticaNeueItalic"/>
+                    </OnPlatform>
+                </Label.FontFamily>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding ForgotPassword}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+
+        <Button
+            Text="Log In"
+            TextColor="White"
+            BackgroundColor="{StaticResource Primary}"
+            CornerRadius="20"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+            Margin="15,3,15,3"
+            Command="{Binding Login}"/>
+
+        <Label 
+            Text="Or"
+            TextColor="Black"
+            Style="{StaticResource LabelMedium}"
+            FontFamily="{OnPlatform Android=RobotoItalic, iOS=HelveticaNeueItalic}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+
+
+        <Frame
+            CornerRadius="25"
+            BorderColor="Transparent"
+            BackgroundColor="#0000FF"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+            Padding="10"
+            HasShadow="False"
+            Margin="15,12,15,2">
+
+            <Grid
+                ColumnDefinitions="*,3*"
+                Margin="0"
+                Padding="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                ColumnSpacing="10">
+
+                <Image
+                    Source="{FontImage FontFamily=FAB, Glyph={x:Static fontAwesome:FontAwesomeIcons.Facebook}, Color=White}"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="2"
+                    Grid.Column="0"/>
+
+                <Label
+                    Text="Login with Facebook"
+                    FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"
+                    TextColor="White"
+                    Style="{StaticResource LabelMedium}"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Column="1"/>
+
+            </Grid>
+        </Frame>
+
+        <Frame
+            CornerRadius="25"
+            BorderColor="Transparent"
+            BackgroundColor="Red"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+            Padding="10"
+            HasShadow="False"
+            Margin="15,2,15,12">
+
+            <Grid
+                ColumnDefinitions="*,3*"
+                Margin="0"
+                Padding="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                ColumnSpacing="10">
+
+                <Image
+                    Source="{FontImage FontFamily=FAB, Glyph={x:Static fontAwesome:FontAwesomeIcons.Google}, Color=White}"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="2"
+                    Grid.Column="0"/>
+
+                <Label
+                    Text="Login with Google"
+                    FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"
+                    TextColor="White"
+                    Style="{StaticResource LabelMedium}"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Column="1"/>
+
+            </Grid>
+        </Frame>
+
+        <Label
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            FontAutoScalingEnabled="False">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span 
+                        Text="Don't have an account yet? "
+                        TextColor="#2F4F4F">
+                        <Span.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="HelveticaNeueRegular"/>
+                                <On Platform="Android" Value="RobotoRegular"/>
+                            </OnPlatform>
+                        </Span.FontFamily>
+                    </Span>
+                    <Span
+                        Text="Sign Up"
+                        TextColor="{StaticResource Primary}"
+                        FontSize="15"
+                        x:Name="signUpLabel">
+                        <Span.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="HelveticaNeueItalic"/>
+                                <On Platform="Android" Value="RobotoItalic"/>
+                            </OnPlatform>
+                        </Span.FontFamily>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SignUp}"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+    </VerticalStackLayout>
+</ContentPage>

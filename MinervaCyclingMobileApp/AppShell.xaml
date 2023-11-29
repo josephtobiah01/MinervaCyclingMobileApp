@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:warrantyviews="clr-namespace:MinervaCyclingMobileApp.Views.WarrantyCertification"
+    xmlns:views="clr-namespace:MinervaCyclingMobileApp.Views"
+    xmlns:maps="clr-namespace:MinervaCyclingMobileApp.Views.Map"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
+    x:Class="MinervaCyclingMobileApp.AppShell"
+    FlyoutWidth="250"
+    FlyoutBackgroundColor="{AppThemeBinding Dark=White, Light=White}">
+
+    <Shell.FlyoutHeaderTemplate >
+        <DataTemplate>
+            <Image
+                Source="minervalogo"
+                Aspect="AspectFit"
+                Margin="10,40,10,10"
+                HeightRequest="100"/>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Dark=white, Light=white}" />
+                <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Dark=Black, Light=Black}" />
+                <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Dark=black, Light=Black}" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark={StaticResource Primary}, Light=White}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Dark=Black, Light=Black}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Dark=White, Light=Black}"/>
+                <Setter Property="Shell.FlyoutBackgroundColor" Value="{AppThemeBinding Dark=White, Light=White}"/>
+
+            </Style>
+            <Style BasedOn="{StaticResource BaseStyle}" TargetType="TabBar" />
+            <Style BasedOn="{StaticResource BaseStyle}" TargetType="FlyoutItem" />
+
+            <Style Class="FlyoutItemLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="FlyoutItemLayoutStyle"
+                TargetType="Layout">
+                <Setter Property="BackgroundColor" Value="LightBlue" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="Black" />
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="White" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="MenuItemLayoutStyle"
+                TargetType="Layout">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="Black" />
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="White" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Shell.NavBarIsVisible="False"/>
+
+    <FlyoutItem
+        Title="Home"
+        Shell.FlyoutBehavior="Flyout"
+        Icon="{FontImage FontFamily=FAS, Glyph={x:Static fontAwesome:FontAwesomeIcons.Home}, Color=Brown}"
+        Route="Home">
+
+        <Tab Title="Home">
+
+            <ShellContent
+                ContentTemplate="{DataTemplate views:HomePage}"
+                Route="HomePage"/>
+
+        </Tab>
+
+        <Tab Title="Map">
+
+            <ShellContent 
+                ContentTemplate="{DataTemplate maps:MapPage}"
+                Route="MapPage"/>
+            
+        </Tab>
+        
+    </FlyoutItem>
+
+    <FlyoutItem
+        
+        Title="Warranties"
+        Shell.FlyoutBehavior="Flyout"
+        Icon="{FontImage FontFamily=FAR, Glyph={x:Static fontAwesome:FontAwesomeIcons.User}, Color=Brown}">
+
+        <Tab Title="Register">
+
+            <ShellContent
+                ContentTemplate="{DataTemplate warrantyviews:CreateNewCertificationPage}"
+                Route="CreateNewCertificationPage"/>
+
+        </Tab>
+
+        <Tab Title="Warranty Type">
+
+            <ShellContent
+                ContentTemplate="{DataTemplate warrantyviews:WarrantyCertificationTypePage}"
+                Route="WarrantyCertificationTypePage"/>
+
+        </Tab>
+
+    </FlyoutItem>
+
+        
+
+
+    
+    
+
+</Shell>

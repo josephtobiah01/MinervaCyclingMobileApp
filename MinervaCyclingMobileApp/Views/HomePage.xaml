@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MinervaCyclingMobileApp.Views.HomePage"
+    BackgroundColor="{AppThemeBinding Dark=white, Light=white}">
+    
+    <Grid
+        RowDefinitions="*,*,*,*,*">
+        
+        <Label 
+            Grid.Row="0"
+            Text="Welcome to Minerva Cycling!"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Style="{StaticResource LabelLarge1}"
+            TextColor="{StaticResource Primary}"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueCondesedBold}"/>
+
+        <Label 
+            Grid.Row="1"
+            Text="This app is still under construction"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Style="{StaticResource LabelLarge1}"
+            TextColor="{StaticResource SystemIndigo1}"
+            FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueCondesedBold}"/>
+
+        <Label 
+            Grid.Row="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Text="please feel free to test the app">
+            <!--<Label.FormattedText>
+                <FormattedString>
+                    
+                    --><!--<Span 
+                        Text=""
+                        />
+                    
+                    <Span 
+                        Text="press on the tabs on the bottom of the screen"
+                        FontFamily="{OnPlatform Android=RobotoItalic, iOS=HelveticaNeueItalic}"
+                        TextColor="{StaticResource Primary}"
+                        Style="{StaticResource LabelMedium}"/>
+                    
+                    <Span 
+                        Text="and the flyout items on the left."
+                        FontFamily="{OnPlatform Android=RobotoItalic, iOS=HelveticaNeueItalic}"
+                        TextColor="{StaticResource SystemIndigo}"
+                        Style="{StaticResource LabelSmall}"/>--><!--
+                    
+                </FormattedString>
+            </Label.FormattedText>-->
+        </Label>
+
+        <Label
+            Grid.Row="3"
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            Text="please feel free to test the app"
+            FontFamily="{OnPlatform Android=RobotoBlack, iOS=HelveticaNeueCondesedBold}"
+            TextColor="{StaticResource SystemIndigo1}"
+            Style="{StaticResource LabelLarge}"/>
+        
+
+    </Grid>
+</ContentPage>

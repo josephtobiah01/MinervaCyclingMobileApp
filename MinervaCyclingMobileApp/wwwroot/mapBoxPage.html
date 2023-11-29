@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-iBB9fPefbFjspg85mmf5gNf09MxXwMdV9I493+5Yf0B6bXSdu6Bf0F1F1e5f2f9F" crossorigin="anonymous">
+
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <div id="app">Loading...</div>
+    
+    <script src="_framework/blazor.webview.js" autostart="false"></script>
+
+    <script>
+
+        var map;
+        
+
+        var userPath = {
+            'type': 'FeatureCollection',
+            'features': [{
+                'type': 'Feature',
+                'properties': {},
+                'geometry': {
+                    'type': 'LineString',
+                    'coordinates': []
+                }
+            }]
+        };
+        var userIcon = {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+                'type': 'Point',
+                'coordinates': []
+            }
+        };
+
+        function initializeMap(long, lat) {
+
+            var mapboxAccessToken = "pk.eyJ1Ijoiam9zZXBoLW1pbmVydmFjeWNsaW5nIiwiYSI6ImNsbm9wMjZqdDBkeGUya3F0czU0YTd0emoifQ.zyhJrLnJOmTyNkCbD-qVyg";
+            var mapbox = document.getElementById("map");
+            if (!mapbox) {
+                console.error("Map container not found");
+                return;
+            }
+            mapboxgl.accessToken = mapboxAccessToken;
+            map = new mapboxgl.Map({
+                container: mapbox,
+                style: 'mapbox://styles/mapbox/outdoors-v12',
+                center: [long, lat],
+                zoom: 17,
+                pitch: 45,
+                bearing: 0
+            });
+
+            map.on('load', function () {
+
+               
+
+                //map.addSource('user-path', {
+                //    'type': 'geojson',
+                //    'data': userPath
+                //});
+
+
+                //map.loadImage(mapMarker, function (error, image) {
+                //    if (error) {
+                //        console.error('Error loading icon:', error);
+                //        return;
+                //    }
+
+
+                //    // Add the image to the map style
+                //    map.addImage('custom-user-icon', image);
+
+                //
+
+                //    // Add source and layer for the user icon
+                //    map.addSource('user-icon', {
+                //        'type': 'geojson',
+                //        'data': userIcon
+                //    });
+
+
+                //});
+
+
+                userIcon.geometry.coordinates = [long, lat];
+
+                map.addSource('user-icon', {
+                    'type': 'geojson',
+                    'data': userIcon
+                });
+             
+                map.addLayer({
+                    'id': 'user-icon-layer',
+                    'type': 'symbol',
+                    'source': 'user-icon',
+                    'layout': {
+                        'icon-image': 'bicycle', // Reference your custom icon
+                        'icon-size': 2
+                    }
+                });
+
+            });
+        }
+
+        function updateMapMarkerPosition(long, lat) {
+
+            if (isSignificantChange(userIcon.geometry.coordinates, [long, lat])) {
+                return;
+            }
+            else {
+                smoothMoveIcon(userIcon.geometry.coordinates, [long, lat]);
+                map.panTo([long, lat], { duration: 500 });
+            }
+            
+            //var newCoord = [long, lat];
+            //userPath.features[0].geometry.coordinates.push(newCoord);
+            //userIcon.geometry.coordinates = newCoord;
+
+            //if (map) {
+            //    if (map.getSource('user-path')) {
+            //        map.getSource('user-path').setData(userPath);
+            //    }
+            //    if (map.getSource('user-icon')) {
+            //        map.getSource('user-icon').setData(userIcon);
+            //    }
+            //    /*map.panTo(newCoord);*/
+            //    map.easeTo({ center: newCoord, speed: 0.5 });
+            //}
+            ////userLocation.geometry.coordinates = [long, lat];
+            //////var userLocation = {
+            //////    'type': 'Feature',
+            //////    'properties': {},
+            //////    'geometry': {
+            //////        'type': 'Point',
+            //////        'coordinates': [long, lat]
+            //////    }
+
+            ////let i = 0;
+            ////if (i < coordinates.length) {
+            ////    map.getSource('user-location').setData(userLocation);
+            ////    map.panTo([long, lat]);
+            ////}
+        }
+
+        function smoothMoveIcon(start, end) {
+            var steps = 10;
+            var stepDeltaLat = (end[1] - start[1]) / steps;
+            var stepDeltaLng = (end[0] - start[0]) / steps;
+
+            for (let i = 1; i <= steps; i++) {
+                setTimeout(() => {
+                    var intermediateLat = start[1] + stepDeltaLat * i;
+                    var intermediateLng = start[0] + stepDeltaLng * i;
+                    userIcon.geometry.coordinates = [intermediateLng, intermediateLat];
+
+                    if (map && map.getSource('user-icon')) {
+                        map.getSource('user-icon').setData(userIcon);
+                    }
+                }, i * 50); // 50ms between each step
+            }
+        }
+
+        function isSignificantChange(oldCoords, newCoords) {
+            //var maxDistance = 0.0001; // Adjust this threshold as needed
+            //var distance = Math.sqrt(
+            //    Math.pow(newCoords[0] - oldCoords[0], 2) +
+            //    Math.pow(newCoords[1] - oldCoords[1], 2)
+            //);
+            //return distance <= maxDistance;
+
+            //newLongitude = newCoords[0] - oldCoords[0];
+            //newLatitude = newCoords[1] - oldCoords[1];
+            //if (newLongitude >= 0.0001 || newLatitude >= 0.0001) {
+            //    return true;
+            //}
+            //else {
+            //    return false;
+            //}
+
+            var maxDistance = 0.0001; // Roughly 11 meters
+
+            var changeInLongitude = Math.abs(newCoords[0] - oldCoords[0]);
+            var changeInLatitude = Math.abs(newCoords[1] - oldCoords[1]);
+
+            if (changeInLongitude >= maxDistance || changeInLatitude >= maxDistance) {
+                return true;
+            }
+            else {
+                return false;
+            }
+             
+        }
+
+    </script>
+</body>
+</html>

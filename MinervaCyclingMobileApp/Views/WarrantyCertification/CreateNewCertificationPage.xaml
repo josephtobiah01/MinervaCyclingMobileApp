@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MinervaCyclingMobileApp.Views.WarrantyCertification.CreateNewCertificationPage"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:custom="clr-namespace:MinervaCyclingMobileApp.CustomRenderers"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:viewmodels="clr-namespace:MinervaCyclingMobileApp.ViewModels.WarrantyCertification"
+    x:DataType="viewmodels:CreateNewCertificationPageViewModel"
+    BackgroundColor="{AppThemeBinding Dark=white, Light=white}"
+    Shell.NavBarIsVisible="True"
+    x:Name="parent">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior 
+            StatusBarColor="{AppThemeBinding Dark=white, Light=white}" 
+            StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+
+    <VerticalStackLayout>
+
+        <!--<Image
+            Grid.Column="0"
+            Source="{FontImage FontFamily=FAS, Glyph={x:Static fontAwesome:FontAwesomeIcons.ArrowLeft}, Color=#000000}"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            HeightRequest="20"
+            WidthRequest="20"
+            Margin="15,15">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer 
+                    Command="{Binding GoBack}"/>
+            </Image.GestureRecognizers>
+        </Image>-->
+
+        <Label 
+            Text="Let's create a new certification for your bike"
+            VerticalOptions="Start" 
+            HorizontalOptions="Start"
+            Margin="15,25"
+            TextColor="{StaticResource Primary}"
+            Style="{StaticResource LabelLarge1}"
+            FontFamily="{OnPlatform Android=RobotoBlack, iOS=HelveticaNeueCondesedBold}"/>
+
+        <Label
+            Text="Shop of purchase"
+            Margin="15,10,15,15"
+            Style="{StaticResource LabelMedium}"
+            HorizontalOptions="Start"
+            HorizontalTextAlignment="Start"
+            TextColor="Black"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueRegular}"/>
+
+        <custom:CustomEntry
+            Placeholder="Please select a shop"
+            FontAttributes="Italic"
+            PlaceholderColor="Gray"
+            HorizontalTextAlignment="Center"
+            BorderThickness="1"
+            BorderColor="Black"
+            MaximumWidthRequest="333"
+            BackgroundColor="White"
+            CornerRadius="20"
+            IsReadOnly="True"
+            Margin="12"
+            Text="{Binding ShopName}"
+            TextColor="Black">
+            <custom:CustomEntry.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding OpenShopsSheet}"/>
+            </custom:CustomEntry.GestureRecognizers>
+        </custom:CustomEntry>
+
+        <Label
+            Text="Date of Purchase"
+            Margin="15,10,15,15"
+            HorizontalOptions="Start"
+            HorizontalTextAlignment="Start"
+            TextColor="Black"
+            Style="{StaticResource LabelMedium}"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueRegular}"/>
+
+        <dx:SimpleButton
+            CornerRadius="20"
+            Text="{Binding DatePickerButtonText}"
+            Command="{Binding OpenCalendar}"
+            BackgroundColor="White"
+            DisabledBorderColor="Black"
+            BorderThickness="1"
+            BorderColor="Black"
+            HorizontalOptions="FillAndExpand"
+            MaximumWidthRequest="333"
+            Margin="12"
+            FontSize="15"
+            FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
+
+        <Label
+            Text="Bike's Picture"
+            Margin="15,10,15,15"
+            HorizontalOptions="Start"
+            HorizontalTextAlignment="Start"
+            TextColor="Black"
+            Style="{StaticResource LabelMedium}"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueRegular}"/>
+
+
+        <Grid
+            RowDefinitions="*,*"
+            ColumnDefinitions="*,*"
+            ColumnSpacing="15"
+            RowSpacing="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+            Padding="0"
+            Margin="12">
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Capture a Photo"
+                Style="{StaticResource LabelMedium}"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="5,5,5,0"
+                FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
+            <Frame
+                Grid.Column="0"
+                Grid.Row="1"
+                Margin="12,0,0,12"
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                CornerRadius="20"
+                MaximumHeightRequest="30"
+                Padding="5"
+                HasShadow="True"
+                BorderColor="{StaticResource Primary}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding CapturePhoto}"/>
+                </Frame.GestureRecognizers>
+                <Image
+                    Source="{FontImage FontFamily=FAS, Glyph={x:Static fontAwesome:FontAwesomeIcons.Camera}, Color={StaticResource SystemIndigo1}}"
+                    Margin="0"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="{StaticResource Primary}"
+                    MaximumHeightRequest="40"
+                    HeightRequest="30"
+                    MaximumWidthRequest="30"/>
+            </Frame>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="Pick a Photo"
+                Style="{StaticResource LabelMedium}"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="5,5,5,0"
+                FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
+
+            <Frame
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="12,0,0,12"
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                CornerRadius="20"
+                MaximumHeightRequest="30"
+                Padding="5"
+                HasShadow="True"
+                BorderColor="{StaticResource Primary}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding UploadPhoto}"/>
+                </Frame.GestureRecognizers>
+                <Image
+                    Source="{FontImage FontFamily=FAS, Glyph={x:Static fontAwesome:FontAwesomeIcons.FileAlt}, Color={StaticResource SystemIndigo1}}"
+                    Margin="0"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="{StaticResource Primary}"
+                    MaximumHeightRequest="40"
+                    HeightRequest="30"
+                    MaximumWidthRequest="30"/>
+            </Frame>
+
+
+        </Grid>
+
+        <Image
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HeightRequest="35"
+            MaximumHeightRequest="45"
+            Aspect="AspectFit"
+            Margin="2"
+            />
+
+
+
+        <dx:BottomSheet
+            State="{Binding OpenShopsSheetState}"
+            GrabberColor="White"
+            BackgroundColor="White"
+            AllowDismiss="True">
+
+            <Grid BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <SearchBar 
+                    Grid.Row="0" 
+                    BackgroundColor="{StaticResource Primary}" 
+                    Placeholder="Search for a shop"
+                    Text="{Binding SearchBarText}"
+                    SearchButtonPressed="SearchBar_SearchButtonPressed"/>
+
+                <CollectionView
+                    x:Name="shopCollectionView"
+                    Grid.Row="1" 
+                    SelectionMode="Single"
+                    ItemsSource="{Binding Shops}"
+                    >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type x:String}">
+                            <Grid Padding="5" Margin="5,1">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Blue"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.SelectShop, Source={x:Reference parent}}" CommandParameter="{Binding .}"/>
+                                </Grid.GestureRecognizers>
+
+                                <Grid.Triggers>
+                                    <DataTrigger
+                                        TargetType="Grid"
+                                        Value="True">
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="{StaticResource Primary}"/>
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        TargetType="Grid"
+                                        Value="False">
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="Transparent"/>
+
+                                    </DataTrigger>
+                                </Grid.Triggers>
+                                
+                                <Label Text="{Binding .}" 
+                                       FontSize="Medium" 
+                                       HorizontalTextAlignment="Start" 
+                                       VerticalTextAlignment="Center"
+                                       TextColor="Black"
+                                       FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"
+                                       Style="{StaticResource LabelLarge}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+        </dx:BottomSheet>
+
+        <dx:BottomSheet
+            State="{Binding OpenSelectedImageSheetState}"
+            GrabberColor="White"
+            BackgroundColor="White">
+
+            <VerticalStackLayout>
+                
+                <Label 
+                    Text="Is this your bike's photo?"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="Start"
+                    Margin="15,25"
+                    TextColor="{StaticResource Primary}"
+                    Style="{StaticResource LabelLarge1}"
+                    FontFamily="{OnPlatform Android=RobotoBlack, iOS=HelveticaNeueCondesedBold}"/>
+
+                <Image
+                    Source="{Binding SelectedImage}"
+                    Aspect="AspectFit"
+                    HeightRequest="225"
+                    WidthRequest="200"
+                    
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center"/>
+
+                <Grid
+                    ColumnDefinitions="*,*">
+                    <Button
+                        Grid.Column="0"
+                        Text="Yes"
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="12"
+                        />
+                    <Button
+                        Grid.Column="1"
+                        Text="No"
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="12"/>
+                </Grid>
+                
+                
+            </VerticalStackLayout>
+        </dx:BottomSheet>
+
+        <dx:DXPopup 
+            x:Name="CalendarDXPopup" 
+            AllowScrim="false" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Bottom" 
+            Margin="12" 
+            AllowShadow="True"
+            IsOpen="{Binding IsPopupOpen}">
+            
+            <dxe:DXCalendar 
+                x:Name="Calendar" 
+                SelectedDateChangedCommand="{Binding SelectedDateChanged}" 
+                SelectedDate="{Binding SelectedDate}"  
+                BackgroundColor="white" 
+                HorizontalCellSpacing="0" 
+                VerticalCellSpacing="0" 
+                ShowTrailingDays="false" 
+                CellMinSize="40">
+                <dxe:DXCalendar.HeaderAppearance>
+                    <dxe:CalendarHeaderAppearance 
+                        HeaderTitleTextColor="#333333" 
+                        BackgroundColor="white"  />
+                </dxe:DXCalendar.HeaderAppearance>
+                <dxe:DXCalendar.DayCellAppearance>
+                    <dxe:CalendarDayCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="12" 
+                        SelectedEllipseBackgroundColor="#006272" 
+                        SelectedTextColor="{StaticResource Primary}" 
+                        TodayEllipseBackgroundColor="#006272" 
+                        TodayTextColor="#006272"
+                        TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.DayCellAppearance>
+                
+                <dxe:DXCalendar.MonthCellAppearance>
+                    <dxe:CalendarMonthCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="12"                
+                        SelectedEllipseBackgroundColor="#006272" 
+                        SelectedTextColor="{StaticResource Primary}" 
+                        TextColor="#4D4D4D" />
+                </dxe:DXCalendar.MonthCellAppearance >
+                
+                <dxe:DXCalendar.YearCellAppearance>
+                    <dxe:CalendarYearCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="12"         
+                        SelectedEllipseBackgroundColor="#006272" 
+                        SelectedTextColor="White" 
+                        TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.YearCellAppearance>
+
+                <dxe:DXCalendar.DayOfWeekCellAppearance>
+                    <dxe:CalendarDayOfWeekCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="10"
+                        TextColor="#333333" 
+                        BackgroundColor="White"/>
+                </dxe:DXCalendar.DayOfWeekCellAppearance>
+            </dxe:DXCalendar>
+        </dx:DXPopup>
+        
+        
+
+    </VerticalStackLayout>
+</ContentPage>
