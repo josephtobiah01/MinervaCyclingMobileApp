@@ -2,19 +2,20 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MinervaCyclingMobileApp.Views.SignUp.NameAndDobPage"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:custom="clr-namespace:MinervaCyclingMobileApp.CustomRenderers"
     xmlns:fontAwesome="clr-namespace:FontAwesome"
+    x:Class="MinervaCyclingMobileApp.Views.SignUp.ReviewDetailsPage"
     xmlns:viewmodels="clr-namespace:MinervaCyclingMobileApp.ViewModels.SignUp"
-    x:DataType="viewmodels:NameAndDobPageViewModel"
+    x:DataType="viewmodels:ReviewDetailsPageViewModel"
     BackgroundColor="{AppThemeBinding Dark=white, Light=white}"
     Shell.NavBarIsVisible="False">
 
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Dark=white, Light=white}" StatusBarStyle="DarkContent"/>
+        <toolkit:StatusBarBehavior 
+            StatusBarColor="{AppThemeBinding Dark=white, Light=white}" 
+            StatusBarStyle="DarkContent"/>
     </ContentPage.Behaviors>
-
+    
     <VerticalStackLayout>
 
         <Grid
@@ -39,7 +40,7 @@
 
             <Label
                 Grid.Column="1"
-                Text="Step 1 of 3"
+                Text="Step 3 of 3"
                 HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center"
                 Margin="15,15"
@@ -54,10 +55,8 @@
             </Label>
         </Grid>
 
-        
-        
         <Label 
-            Text="What is your name and date of birth?"
+            Text="Let's review your details if they are correct"
             VerticalOptions="Start" 
             HorizontalOptions="Start"
             Margin="15,25"
@@ -75,15 +74,13 @@
             TextColor="Black"
             FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
 
-        <custom:CustomEntry
+        <Label
             Text="{Binding FirstName}"
             Margin="15,7"
             HorizontalOptions="FillAndExpand"
-            BorderColor="Black"
-            CornerRadius="15"
-            BorderThickness="1"
-            ClearButtonVisibility="WhileEditing"
-            TextColor="Black"/>
+            Style="{StaticResource LabelLarge}"
+            TextColor="{StaticResource Primary}"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueCondesedBold}"/>
 
         <Label
             x:Name="lastNameLabel"
@@ -95,50 +92,73 @@
             TextColor="Black"
             FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
 
-        <custom:CustomEntry
+        <Label
             Text="{Binding LastName}"
             Margin="15,7"
             HorizontalOptions="FillAndExpand"
-            BorderColor="Black"
-            CornerRadius="15"
-            BorderThickness="1"
-            ClearButtonVisibility="Never"
-            TextColor="Black"/>
+            Style="{StaticResource LabelLarge}"
+            TextColor="{StaticResource Primary}"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueCondesedBold}"/>
 
-        <!--<Label
-            x:Name="dobLabel"
-            Text="Date of Birth"
-            Margin="15,7"
-            FontSize="15"
+        <Label
             HorizontalOptions="Start"
-            HorizontalTextAlignment="Start"
+            VerticalOptions="Center"
+            Margin="15,7"
+            Text="Email"
             TextColor="Black"
             FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
 
-        <custom:CustomEntry
+        <Label
+            Text="{Binding Email}"
             Margin="15,7"
             HorizontalOptions="FillAndExpand"
-            BorderColor="Black"
-            CornerRadius="15"
-            BorderThickness="1"
-            ClearButtonVisibility="WhileEditing"
-            TextColor="Black"
-            />-->
+            Style="{StaticResource LabelLarge}"
+            TextColor="{StaticResource Primary}"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueCondesedBold}"/>
 
+        <Label
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            Margin="15,7"
+            Text="Birthday"
+            TextColor="Black"
+            FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
+
+        <Label
+            Text="{Binding FormattedBday}"
+            Margin="15,7"
+            HorizontalOptions="FillAndExpand"
+            Style="{StaticResource LabelLarge}"
+            TextColor="{StaticResource Primary}"
+            FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueCondesedBold}"/>
+
+        <Label
+            Margin="15,35,15,12"
+            Text="If these information are correct, press Submit to Create your Account"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            VerticalOptions="CenterAndExpand"
+            Style="{StaticResource LabelMedium}"
+            TextColor="Black"
+            FontFamily="{OnPlatform Android=RobotoItalic, iOS=HelveticaNeueItalic}"/>
+        
         <Button
-            Text="Next"
+            Text="Submit"
             TextColor="White"
             BackgroundColor="{StaticResource Primary}"
             CornerRadius="20"
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            Margin="15,35"
+            Margin="15,12"
             WidthRequest="250"
             HeightRequest="42"
             CharacterSpacing="1"
             FontSize="18"
             FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueCondesedBold}"
-            Command="{Binding NextPage}"/>
+            Command="{Binding CreateAccount}"/>
+
+
 
     </VerticalStackLayout>
+    
 </ContentPage>

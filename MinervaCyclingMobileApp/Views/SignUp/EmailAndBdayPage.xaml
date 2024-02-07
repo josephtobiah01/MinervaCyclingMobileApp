@@ -7,6 +7,8 @@
     xmlns:custom="clr-namespace:MinervaCyclingMobileApp.CustomRenderers"
     xmlns:fontAwesome="clr-namespace:FontAwesome"
     xmlns:viewmodels="clr-namespace:MinervaCyclingMobileApp.ViewModels.SignUp"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     x:DataType="viewmodels:EmailAndBdayPageViewModel"
     BackgroundColor="{AppThemeBinding Dark=white, Light=white}"
     Shell.NavBarIsVisible="False">
@@ -89,10 +91,12 @@
                 ClearButtonVisibility="WhileEditing"
                 CornerRadius="15"
                 BorderThickness="1"
+                TextColor="Black"
                 BorderColor="{StaticResource SystemIndigo1}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Center"
-                Margin="5,0"/>
+                Margin="5,0"
+                Text="{Binding Email}"/>
 
             <Label
                 Grid.Row="0"
@@ -104,7 +108,7 @@
                 TextColor="Black"
                 FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
 
-            <custom:CustomEntry
+            <!--<custom:CustomEntry
                 Grid.Row="1"
                 Grid.Column="1"
                 Placeholder="Birthday"
@@ -114,7 +118,23 @@
                 BorderColor="{StaticResource SystemIndigo1}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Center"
-                Margin="5,0"/>
+                Margin="5,0"/>-->
+
+            <dx:SimpleButton
+                Grid.Row="1"
+                Grid.Column="1"
+                CornerRadius="20"
+                Text="{Binding DatePickerButtonText}"
+                Command="{Binding OpenCalendar}"
+                BackgroundColor="White"
+                DisabledBorderColor="Black"
+                BorderThickness="1"
+                BorderColor="Black"
+                HorizontalOptions="FillAndExpand"
+                MaximumWidthRequest="333"
+                Margin="12"
+                FontSize="15"
+                FontFamily="{OnPlatform Android=RobotoRegular, iOS=HelveticaNeueRegular}"/>
 
         </Grid>
 
@@ -133,5 +153,71 @@
             FontFamily="{OnPlatform Android=RobotoBold, iOS=HelveticaNeueCondesedBold}"
             Command="{Binding NextPage}"/>
 
+        <dx:DXPopup 
+            x:Name="CalendarDXPopup" 
+            AllowScrim="false" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Bottom" 
+            Margin="12" 
+            AllowShadow="True"
+            IsOpen="{Binding IsPopupOpen}">
+
+            <dxe:DXCalendar 
+                x:Name="Calendar" 
+                SelectedDateChangedCommand="{Binding SelectedDateChanged}" 
+                SelectedDate="{Binding SelectedDate}"  
+                BackgroundColor="white" 
+                HorizontalCellSpacing="0" 
+                VerticalCellSpacing="0" 
+                ShowTrailingDays="false" 
+                CellMinSize="40">
+                <dxe:DXCalendar.HeaderAppearance>
+                    <dxe:CalendarHeaderAppearance 
+                        HeaderTitleTextColor="#333333" 
+                        BackgroundColor="white"  />
+                </dxe:DXCalendar.HeaderAppearance>
+                <dxe:DXCalendar.DayCellAppearance>
+                    <dxe:CalendarDayCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="12" 
+                        SelectedEllipseBackgroundColor="#006272" 
+                        SelectedTextColor="{StaticResource Primary}" 
+                        TodayEllipseBackgroundColor="#006272" 
+                        TodayTextColor="#006272"
+                        TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.DayCellAppearance>
+
+                <dxe:DXCalendar.MonthCellAppearance>
+                    <dxe:CalendarMonthCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="12"                
+                        SelectedEllipseBackgroundColor="#006272" 
+                        SelectedTextColor="{StaticResource Primary}" 
+                        TextColor="#4D4D4D" />
+                </dxe:DXCalendar.MonthCellAppearance >
+
+                <dxe:DXCalendar.YearCellAppearance>
+                    <dxe:CalendarYearCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="12"         
+                        SelectedEllipseBackgroundColor="#006272" 
+                        SelectedTextColor="White" 
+                        TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.YearCellAppearance>
+
+                <dxe:DXCalendar.DayOfWeekCellAppearance>
+                    <dxe:CalendarDayOfWeekCellAppearance 
+                        FontAttributes="Bold" 
+                        FontFamily="Montserrat" 
+                        FontSize="10"
+                        TextColor="#333333" 
+                        BackgroundColor="White"/>
+                </dxe:DXCalendar.DayOfWeekCellAppearance>
+
+            </dxe:DXCalendar>
+        </dx:DXPopup>
     </VerticalStackLayout>
 </ContentPage>

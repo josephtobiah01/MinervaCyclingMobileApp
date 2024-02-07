@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
+    x:Class="MinervaCyclingMobileApp.Views.AvailableEventsPage"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{AppThemeBinding Dark=#132020, Light=white}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Dark=#132020, Light=white}" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+    
+    
+    <ScrollView>
+
+        
+
+            
+
+        <VerticalStackLayout>
+            
+            <HorizontalStackLayout>
+                <Image
+        Source="{FontImage FontFamily=FAS, Glyph={x:Static fontAwesome:FontAwesomeIcons.ArrowLeft}, Color=#FFFFFF}"
+        HorizontalOptions="Start"
+        VerticalOptions="Center"
+        HeightRequest="20"
+        WidthRequest="20"
+        Margin="15"/>
+
+                <Label
+        Text="Available Events"
+        Style="{x:StaticResource LabelLarge2}"
+        FontFamily="{OnPlatform Android=RobotoBold}"
+        TextColor="#FFFFFF"
+        Grid.Column="0"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+            
+            <Frame 
+    Margin="12"
+    HorizontalOptions="FillAndExpand" 
+    CornerRadius="10" 
+    BorderColor="Transparent"
+    Padding="0"
+                HeightRequest="225">
+                <Grid
+        Margin="0"
+        Padding="0">
+                    <Image 
+            Source="firstevent.jpg" 
+            Aspect="AspectFill"/>
+
+                    <StackLayout 
+            VerticalOptions="End" 
+            Spacing="12">
+                        <Label 
+                Text="Item 1 Title" 
+                            VerticalOptions="Center"
+                            Margin="15,15,15,5"
+                FontAttributes="Bold" 
+                TextColor="White"
+                Style="{StaticResource LabelLarge}"/>
+                        <Label 
+                Text="Item 1 Description" 
+                TextColor="White"
+                            Margin="15,10,15,15"
+                Style="{StaticResource LabelMedium}"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Item 2 -->
+            <Frame 
+    Margin="12"
+    HorizontalOptions="FillAndExpand"
+    CornerRadius="10" 
+    BorderColor="Transparent"
+    Padding="0"
+                HeightRequest="225">
+                <Grid
+        Margin="0"
+        Padding="0">
+                    <Image 
+            Source="secondevent.jpg" 
+            Aspect="AspectFill"/>
+
+                    <StackLayout 
+            VerticalOptions="End" 
+            Spacing="12">
+                        <Label 
+                Text="Item 2 Title" 
+                            Margin="15,15,15,5"
+                FontAttributes="Bold" 
+                TextColor="White"
+                Style="{StaticResource LabelLarge}"/>
+                        <Label 
+                Text="Item 2 Description" 
+                            Margin="15,10,15,15"
+                TextColor="White"
+                Style="{StaticResource LabelMedium}"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Item 3 -->
+            <Frame 
+    Margin="12"
+    HorizontalOptions="FillAndExpand"
+    CornerRadius="10" 
+    BorderColor="Transparent"
+    Padding="0"
+                HeightRequest="225">
+                <Grid
+        Margin="0"
+        Padding="0">
+                    <Image 
+            Source="firstevent.jpg" 
+            Aspect="AspectFill"/>
+
+                    <StackLayout 
+            VerticalOptions="End" 
+            Spacing="12">
+                        <Label 
+                Text="Item 3 Title" 
+                            Margin="15,15,15,5"
+                FontAttributes="Bold" 
+                TextColor="White"
+                Style="{StaticResource LabelLarge}"/>
+                        <Label 
+                Text="Item 3 Description" 
+                            Margin="15,10,15,15"
+                TextColor="White"
+                Style="{StaticResource LabelMedium}"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Item 4 -->
+            <Frame  
+    Margin="12"
+    HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand"
+    CornerRadius="10" 
+    BorderColor="Transparent"
+                Padding="0"
+                HeightRequest="225">
+                <Grid
+        Margin="0"
+        Padding="0">
+                    <Image 
+            Source="secondevent.jpg" 
+            Aspect="AspectFill"/>
+
+                    <StackLayout 
+            VerticalOptions="End" 
+            Spacing="12">
+                        <Label 
+                Text="Item 4 Title" 
+                            Margin="15,15,15,5"
+                FontAttributes="Bold" 
+                TextColor="White"
+                Style="{StaticResource LabelLarge}"/>
+                        <Label 
+                Text="Item 4 Description" 
+                            Margin="15,10,15,15"
+                TextColor="White"
+                Style="{StaticResource LabelMedium}"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+
+            
+
+        
+    
+
+    
+            
+                <!-- Item 1 -->
+                
+            
+        </ScrollView>
+</ContentPage>

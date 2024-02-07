@@ -16,10 +16,12 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(EmailAndBdayPage), typeof(EmailAndBdayPage));
 		Routing.RegisterRoute(nameof(CreatePasswordPage), typeof(CreatePasswordPage));
 		Routing.RegisterRoute(nameof(ForgotPasswordPage), typeof(ForgotPasswordPage));
+		Routing.RegisterRoute(nameof(ReviewDetailsPage), typeof(ReviewDetailsPage));
 		Routing.RegisterRoute(nameof(WarrantyCertificationTypePage), typeof(WarrantyCertificationTypePage));
 		Routing.RegisterRoute(nameof(CreateNewCertificationPage), typeof(CreateNewCertificationPage));
 		Routing.RegisterRoute(nameof(MapPage), typeof(MapPage));
 		Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+		Routing.RegisterRoute(nameof(AvailableEventsPage), typeof(AvailableEventsPage));
 		
 	}
 }

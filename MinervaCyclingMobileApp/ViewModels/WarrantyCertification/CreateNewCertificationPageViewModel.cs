@@ -12,7 +12,7 @@ namespace MinervaCyclingMobileApp.ViewModels.WarrantyCertification
     public class CreateNewCertificationPageViewModel : ViewModelBase
     {
         #region Fields
-
+            
         private new readonly INavigationService NavigationService;
         private readonly IGetShopsService _getShopsService;
         private readonly ISelectedImageService _selectedImageService;

@@ -118,7 +118,15 @@
                 Route="MapPage"/>
             
         </Tab>
-        
+
+        <Tab Title="Events">
+
+            <ShellContent 
+                ContentTemplate="{DataTemplate views:AvailableEventsPage}"
+                Route="MapPage"/>
+
+        </Tab>
+
     </FlyoutItem>
 
     <FlyoutItem

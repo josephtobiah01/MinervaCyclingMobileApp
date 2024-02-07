@@ -8,7 +8,10 @@ namespace MinervaCyclingMobileApp.Models.ApiResponse
 {
     public class BaseResponse
     {
+        public int Id { get; set; }
+        public string UserLang { get; set; }
         public int StatusCode { get; set; }
         public string Message { get; set; }
+        public bool Status { get; set; }
     }
 }

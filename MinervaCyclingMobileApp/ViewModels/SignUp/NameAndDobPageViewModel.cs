@@ -15,7 +15,9 @@ namespace MinervaCyclingMobileApp.ViewModels.SignUp
 
         #region Fields
 
-        private readonly INavigationService NavigationService;
+        //private readonly INavigationService _navigationService;
+        private string _firstName;
+        private string _lastName;
 
         #endregion Fields
 
@@ -24,6 +26,16 @@ namespace MinervaCyclingMobileApp.ViewModels.SignUp
 
         public Command GoBack { get; set; }
         public Command NextPage { get; set; }
+        public string FirstName
+        {
+            get { return _firstName; }
+            set { SetPropertyValue(ref _firstName, value); }
+        }
+        public string LastName
+        {
+            get { return _lastName; }
+            set { SetPropertyValue(ref _lastName, value); }
+        }
 
 
 
@@ -35,7 +47,7 @@ namespace MinervaCyclingMobileApp.ViewModels.SignUp
 
         public NameAndDobPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            NavigationService = navigationService;
+            //_navigationService = navigationService;
 
             GoBack = new Command(GoBackCommand);
             NextPage = new Command(NextPageCommand);
@@ -54,9 +66,22 @@ namespace MinervaCyclingMobileApp.ViewModels.SignUp
             NavigationService.GoBack();
         }
 
-        private void NextPageCommand(object obj)
+        private async void NextPageCommand()
         {
-            NavigationService.NavigateTo(nameof(EmailAndBdayPage));
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("FirstName", FirstName);
+                parameters.Add("LastName", LastName);
+
+                await NavigationService.NavigateTo("EmailAndBdayPage", parameters);
+            }
+            catch (Exception ex)
+            {
+                ShowAlert("Woops", $"There is an error: {ex.Message}");
+                Console.WriteLine(ex.ToString());
+            }
+            
         }
 
 

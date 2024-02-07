@@ -115,11 +115,7 @@
       <None Remove="Resources\Images\camerabike.png" />
       <None Remove="Resources\Images\downarrow.png" />
       <None Remove="Resources\Images\fileexplorer.png" />
-      <None Remove="Resources\Images\firstevent.jpg" />
-      <None Remove="Resources\Images\fourthevent.jpeg" />
       <None Remove="Resources\Images\minervalogo.png" />
-      <None Remove="Resources\Images\secondevent.jpeg" />
-      <None Remove="Resources\Images\thirdevent.jpg" />
       <None Remove="Shared\MainLayout.razor.css" />
       <None Remove="Shared\NavMenu.razor.css" />
     </ItemGroup>
@@ -134,30 +130,24 @@
       <Compile Include="Helpers\BindableBase.cs" />
       <Compile Include="Helpers\FontAwesome.cs" />
       <Compile Include="Helpers\Helpers.cs" />
-      <Compile Include="Interfaces\IApiManager.cs" />
       <Compile Include="Interfaces\IAuthenticationService.cs" />
       <Compile Include="Interfaces\ICreateCertificationService.cs" />
-      <Compile Include="Interfaces\ICreateContactService.cs" />
       <Compile Include="Interfaces\ICreateInsuranceOrderService.cs" />
       <Compile Include="Interfaces\ICreateRequestService.cs" />
       <Compile Include="Interfaces\ICreateShopOrderService.cs" />
       <Compile Include="Interfaces\IGeoLocationService.cs" />
       <Compile Include="Interfaces\IGetBikeIssuesService.cs" />
-      <Compile Include="Interfaces\IGetCertificatesService.cs" />
       <Compile Include="Interfaces\IGetCertificationsByUserService.cs" />
       <Compile Include="Interfaces\IGetOrdersService.cs" />
       <Compile Include="Interfaces\IGetRepairCentersService.cs" />
       <Compile Include="Interfaces\IGetRequestsService.cs" />
       <Compile Include="Interfaces\IGetShopPromosService.cs" />
       <Compile Include="Interfaces\IGetShopsService.cs" />
-      <Compile Include="Interfaces\IGetWarrantiesService.cs" />
       <Compile Include="Interfaces\INavigationService.cs" />
       <Compile Include="Interfaces\ISelectedImageService.cs" />
       <Compile Include="MainPage.xaml.cs" />
       <Compile Include="MauiProgram.cs" />
-      <Compile Include="Models\ApiRequest\BaseRequest.cs" />
       <Compile Include="Models\ApiRequest\CreateCertificationRequest.cs" />
-      <Compile Include="Models\ApiRequest\CreateContactRequest.cs" />
       <Compile Include="Models\ApiRequest\CreateRequestRequest.cs" />
       <Compile Include="Models\ApiRequest\CreateShopOrderRequest.cs" />
       <Compile Include="Models\ApiRequest\GetCertificationsByUserRequest.cs" />
@@ -169,14 +159,11 @@
       <Compile Include="Models\ApiResponse\BaseResponse.cs" />
       <Compile Include="Models\ApiResponse\BikeIssuesResponse.cs" />
       <Compile Include="Models\ApiResponse\CreateCertificationResponse.cs" />
-      <Compile Include="Models\ApiResponse\CreateContactResponse.cs" />
       <Compile Include="Models\ApiResponse\CreateRequestResponse.cs" />
       <Compile Include="Models\ApiResponse\CreateShopOrderResponse.cs" />
-      <Compile Include="Models\ApiResponse\GetCertificatesResponse.cs" />
       <Compile Include="Models\ApiResponse\GetCertificationsByUserResponse.cs" />
       <Compile Include="Models\ApiResponse\GetOrdersResponse.cs" />
       <Compile Include="Models\ApiResponse\GetPromosResponse.cs" />
-      <Compile Include="Models\ApiResponse\GetWarrantiesResponse.cs" />
       <Compile Include="Models\ApiResponse\InsurranceOrderResponse.cs" />
       <Compile Include="Models\ApiResponse\OverviewRequestsResponse.cs" />
       <Compile Include="Models\ApiResponse\RepairCenterResponse.cs" />
@@ -196,37 +183,30 @@
       <Compile Include="Platforms\iOS\CustomPickerMapper.cs" />
       <Compile Include="Platforms\iOS\Program.cs" />
       <Compile Include="Resources\Styles\MinervaMobileAppStyles.xaml.cs" />
-      <Compile Include="Services\ApiManager.cs" />
       <Compile Include="Services\AuthenticationService.cs" />
       <Compile Include="Services\CreateCertificationService.cs" />
-      <Compile Include="Services\CreateContactService.cs" />
       <Compile Include="Services\CreateInsurranceOrderService.cs" />
       <Compile Include="Services\CreateRequestService.cs" />
       <Compile Include="Services\CreateShopOrderService.cs" />
       <Compile Include="Services\GeolocationService.cs" />
       <Compile Include="Services\GetBikeIssuesService.cs" />
-      <Compile Include="Services\GetCertificatesService.cs" />
       <Compile Include="Services\GetCertificationsByUserService.cs" />
       <Compile Include="Services\GetOrdersService.cs" />
       <Compile Include="Services\GetRepairCentersService.cs" />
       <Compile Include="Services\GetRequestsService.cs" />
       <Compile Include="Services\GetShopPromosService.cs" />
       <Compile Include="Services\GetShopsService.cs" />
-      <Compile Include="Services\GetWarrantiesService.cs" />
       <Compile Include="Services\NavigationService.cs" />
       <Compile Include="Services\SelectedImageService.cs" />
       <Compile Include="Validation\IValidationRule.cs" />
       <Compile Include="ViewModels\ForgotPasswordPageViewModel.cs" />
-      <Compile Include="ViewModels\HomePageViewModel.cs" />
       <Compile Include="ViewModels\LoginPageViewModel.cs" />
       <Compile Include="ViewModels\SignUp\CreatePasswordPageViewModel.cs" />
       <Compile Include="ViewModels\SignUp\EmailAndBdayPageViewModel.cs" />
       <Compile Include="ViewModels\SignUp\NameAndDobPageViewModel.cs" />
-      <Compile Include="ViewModels\SignUp\ReviewDetailsPageViewModel.cs" />
       <Compile Include="ViewModels\ViewModelBase.cs" />
       <Compile Include="ViewModels\WarrantyCertification\CreateNewCertificationPageViewModel.cs" />
       <Compile Include="ViewModels\WarrantyCertification\WarrantyCertificationTypePageViewModel.cs" />
-      <Compile Include="Views\AvailableEventsPage.xaml.cs" />
       <Compile Include="Views\BlazorPages\MapBoxPage.razor.cs" />
       <Compile Include="Views\HomePage.xaml.cs">
         <DependentUpon>HomePage.xaml</DependentUpon>
@@ -237,7 +217,6 @@
       <Compile Include="Views\SignUp\CreatePasswordPage.xaml.cs" />
       <Compile Include="Views\SignUp\EmailAndBdayPage.xaml.cs" />
       <Compile Include="Views\SignUp\NameAndDobPage.xaml.cs" />
-      <Compile Include="Views\SignUp\ReviewDetailsPage.xaml.cs" />
       <Compile Include="Views\WarrantyCertification\CreateNewCertificationPage.xaml.cs" />
       <Compile Include="Views\WarrantyCertification\WarrantyCertificationTypePage.xaml.cs" />
     </ItemGroup>
@@ -268,9 +247,6 @@
       <MauiXaml Update="Resources\Styles\MinervaMobileAppStyles.xaml">
         <Generator></Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\AvailableEventsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
       <MauiXaml Update="Views\HomePage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
@@ -290,9 +266,6 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\SignUp\NameAndDobPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Views\SignUp\ReviewDetailsPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\WarrantyCertification\CreateNewCertificationPage.xaml">

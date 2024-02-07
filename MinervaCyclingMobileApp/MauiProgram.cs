@@ -106,15 +106,23 @@ namespace MinervaCyclingMobileApp
             builder.Services.AddTransient<CreatePasswordPage>();
             builder.Services.AddTransient<CreatePasswordPageViewModel>();
 
+            builder.Services.AddTransient<ReviewDetailsPage>();
+            builder.Services.AddTransient<ReviewDetailsPageViewModel>();
+
             builder.Services.AddTransient<WarrantyCertificationTypePage>();
             builder.Services.AddTransient<WarrantyCertificationTypePageViewModel>();
 
             builder.Services.AddTransient<CreateNewCertificationPage>();
             builder.Services.AddTransient<CreateNewCertificationPageViewModel>();
 
+
+
             builder.Services.AddTransient<MapPage>();
 
             builder.Services.AddTransient<HomePage>();
+            builder.Services.AddTransient<HomePageViewModel>();
+
+            builder.Services.AddTransient<AvailableEventsPage>();
 
             return builder.Build();
         }
@@ -136,6 +144,10 @@ namespace MinervaCyclingMobileApp
             services.AddSingleton<IGetOrdersService, GetOrdersService>();
             services.AddSingleton<ICreateInsuranceOrderService, CreateInsurranceOrderService>();
             services.AddSingleton<IGeoLocationService, GeolocationService>();
+            services.AddSingleton<IApiManager, ApiManager>();
+            services.AddSingleton<ICreateContactService, CreateContactService>();
+            services.AddSingleton<IGetWarrantiesService, GetWarrantiesService>();
+            services.AddSingleton<IGetCertificatesService, GetCertificatesService>();
         }
 
 
@@ -150,6 +162,8 @@ namespace MinervaCyclingMobileApp
             RegisterForNavigation.Register<CreateNewCertificationPage>();
             RegisterForNavigation.Register<MapPage>();
             RegisterForNavigation.Register<HomePage>();
+            RegisterForNavigation.Register<ReviewDetailsPage>();
+            RegisterForNavigation.Register<AvailableEventsPage>();
 
         }
     }
